@@ -2,9 +2,11 @@ const form = document.querySelector("form");
 const usrName = document.getElementById("username");
 const usrEmail = document.getElementById("email");
 const usrPass = document.getElementById("password");
-const usrPassConfirm =document.getElementById("passConfirm");
+const usrPassConfirm = document.getElementById("passConfirm");
 
 const errors = [];
+
+//
 
 const checkRequired = (arg) => {
     if (!arg.value.trim().length) {
@@ -15,7 +17,7 @@ const checkRequired = (arg) => {
 };
 
 const checkLength = (arg, min, max) => {
-    if (arg.value.trim().lenght < min || arg.value.trim().length > max) {
+    if (arg.value.trim().length < min || arg.value.trim().length > max) {
         showError(arg, `Must be between ${min} and ${max} characters`);
     } else {
         showSuccess(arg);
@@ -45,13 +47,15 @@ const checkMatch = (arg1, arg2) => {
 //
 
 const showError = (arg, msg) => {
-    arg.parentElement.classList = "ERROR";
-    arg.nextElementSibling.innerText = msg;
+    arg.parentElement.classList = "error";
+    arg.nextElementSibling.nextElementSibling.innerText = msg;
+    arg.nextElementSibling.nextElementSibling.classList.remove("msg");
     errors.push(arg);
+    console.log(arg.nextElementSibling.nextElementSibling);
 };
 
 const showSuccess = (arg) => {
-    arg.parentElement.classList = "SUCCESS";
+    arg.parentElement.classList= "success";
 };
 
 //
@@ -73,9 +77,9 @@ form.addEventListener("submit", (e) => {
 
     checkMatch(usrPass, usrPassConfirm);
 
-    console.log("errors");
+     console.log(errors);
 
-    if (!errors.length) {
+     if (!errors.length) {
         console.log({
             usrName: usrName.value,
             usrEmail: usrEmail.value,

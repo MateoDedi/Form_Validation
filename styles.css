@@ -44,15 +44,18 @@ input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 25px;
+    
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
 }
 
 .msg {
-    color: red;
     display: none;
+}
+
+.error {
+    color: red;
 }
 
 .success {
