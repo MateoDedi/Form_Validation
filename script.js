@@ -1,1 +1,1 @@
-w
+const usrname = document.getElementById("username");
